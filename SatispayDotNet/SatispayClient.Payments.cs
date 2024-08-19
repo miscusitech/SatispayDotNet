@@ -61,6 +61,38 @@ namespace SatispayDotNet
                 Metadata = metadata
             }, cancellationToken);
 
+        public Task<PaymentDetailsResource> CreateMatchCodeMealVoucherPaymentAsync(
+            int amountUnit,
+            Currency currency,
+            string externalCode,
+            string callbackUrl,
+            int maxAmountUnit = 0,
+            int maxNumber = 8,
+            bool partialPayment = false,
+            Dictionary<string, string> metadata = null,
+            CancellationToken cancellationToken = default)
+            => SendCreatePaymentRequestAsync(new CreateMatchCodePaymentRequest
+            {
+                AmountUnit = amountUnit,
+                Currency = currency,
+                ExternalCode = externalCode,
+                CallbackUrl = callbackUrl,
+                Metadata = metadata,
+                PaymentMethodOptions = new PaymentMethodOptions
+                {
+                    MealVoucher = new MealVoucher
+                    {
+                        Enable = true,
+                        MaxAmountUnit = maxAmountUnit == 0 ? amountUnit : maxAmountUnit,
+                        MaxNumber = maxNumber,
+                    }
+                },
+                PaymentOptions = new PaymentOptions
+                {
+                    PartialPayment = partialPayment,
+                }
+            }, cancellationToken);
+
         public Task<PaymentDetailsResource> CreateRefundAsync(
             int amountUnit,
             Currency currency,

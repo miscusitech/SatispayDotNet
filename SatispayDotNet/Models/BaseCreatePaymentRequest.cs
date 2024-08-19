@@ -13,6 +13,8 @@ namespace SatispayDotNet.Models
         public Currency Currency { get; set; }
         [JsonPropertyName("payment_method_options")]
         public PaymentMethodOptions PaymentMethodOptions { get; set; }
+        [JsonPropertyName("payment_options")]
+        public PaymentOptions PaymentOptions { get; set; }
         [JsonPropertyName("external_code")]
         public string ExternalCode { get; set; }
         [JsonPropertyName("callback_url")]
