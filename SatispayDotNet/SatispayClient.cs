@@ -12,7 +12,7 @@ namespace SatispayDotNet
 {
     public partial class SatispayClient : IDisposable
     {
-        private const string ApiUrl = "https://staging.authservices.satispay.com/g_business/";
+        private const string ApiUrl = "https://authservices.satispay.com/g_business/";
         private const string SandboxApiUrl = "https://staging.authservices.satispay.com/g_business/";
 
         private readonly HttpClient _httpClient;
